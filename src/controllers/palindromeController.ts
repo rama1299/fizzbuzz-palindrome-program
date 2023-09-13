@@ -9,6 +9,10 @@ async function displayPalindrome(req: Request, res: Response, next: NextFunction
             throw { name: "IncompleteData" }
         }
 
+        if (typeof kata !== 'string') {
+            throw { name: "InvalidDataType" };
+        }
+
         if (!palindrome(kata)) {
             return res.status(400).json({ error: `kata ${kata} bukan merupakan palindrome.` })
         }

@@ -4,6 +4,11 @@ import fizzbuzz from "../helpers/fizzbuzz";
 async function displayFizzbuzz(req: Request, res: Response, next: NextFunction) {
     try {
         const { angka } = req.body
+
+        if (!angka) {
+            throw { name: "IncompleteData" }
+        }
+
         if (isNaN(angka) || angka <= 0) {
             throw { name: "IncorrectNumber" }
         }
